@@ -2,16 +2,19 @@ import React, { useState, useEffect } from "react";
 import logo_icon from "/assets/logo.svg";
 import { useLocation } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
+import { FiSun, FiMoon } from "react-icons/fi";              // ✅ NEW
 import ButtonGradient from "../buttons/ButtonGradient.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import useIsSmallScreen from "../hooks/useIsSmallScreen.js";
-import NavHoverLink from "./NavHoverLink.jsx";   // ✅ import here
+import NavHoverLink from "./NavHoverLink.jsx";
+import { useAppContext } from "../context/AppContext.jsx";   // ✅ NEW
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isSmall = useIsSmallScreen();
+  const { theme, setTheme } = useAppContext();               // ✅ NEW
 
   const handleScroll = () => setScrolled(window.scrollY > 100);
 
@@ -21,6 +24,9 @@ const Navbar = () => {
   }, []);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+  const toggleTheme = () =>                                  // ✅ NEW
+    setTheme((t) => (t === "dark" ? "light" : "dark"));
 
   const navItems = [
     { label: "Home", path: "/" },
@@ -56,7 +62,7 @@ const Navbar = () => {
               <NavHoverLink
                 key={label}
                 to={path}
-                className={`${isActive ? "text-primary font-semibold" : scrolled ? "text-slate-700" : "text-[#525F81]"} hover:text-primary`}
+                className={`${isActive ? "text-pretty font-semibold" : scrolled ? "text-slate-700" : "text-[#525F81]"} hover:text-pretty`}
               >
                 {label}
               </NavHoverLink>
@@ -64,17 +70,28 @@ const Navbar = () => {
           })}
         </nav>
 
-        {!isSmall && <ButtonGradient onClick={() => {}}>Hire me</ButtonGradient>}
+        {/* Right side controls (theme toggle + CTA on desktop) */}
+        <div className="flex items-center gap-3">
+          {/* ✅ Theme toggle button */}
+          <button
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            className="p-2 rounded-full border border-slate-200 hover:border-slate-300 transition text-slate-700"
+          >
+            {theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />}
+          </button>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} aria-label="Toggle menu">
+          {!isSmall && <ButtonGradient onClick={() => {}}>Hire me</ButtonGradient>}
+
+          {/* Mobile Menu Toggle */}
+          <button onClick={toggleMenu} aria-label="Toggle menu" className="md:hidden">
             {menuOpen ? <HiOutlineX size={24} /> : <HiOutlineMenu size={24} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu with hover effect */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -83,7 +100,7 @@ const Navbar = () => {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className={`absolute top-[66px] shadow-md rounded-b-2xl md:hidden z-40 bg-white border-t-2 border-primary w-full ${
+            className={`absolute top-[66px] shadow-md rounded-b-2xl md:hidden z-40 bg-white border-t-2 border-pretty w-full ${
               scrolled ? "max-w-[80%]" : "max-w-[1140px]"
             }`}
           >
@@ -94,7 +111,7 @@ const Navbar = () => {
                   <NavHoverLink
                     key={label}
                     to={path}
-                    className={`${isActive ? "text-primary font-semibold" : "text-slate-600"} hover:text-primary`}
+                    className={`${isActive ? "text-pretty font-semibold" : "text-slate-600"} hover:text-pretty`}
                     onClick={() => setMenuOpen(false)}
                   >
                     {label}

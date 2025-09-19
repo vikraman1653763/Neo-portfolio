@@ -3,10 +3,11 @@ import { HyperText } from "./ui/hyper-text";
 import { MorphingText } from "./ui/morphing-text";
 import Spinner from "./Spinner";
 import { Send2 } from "iconsax-reactjs";
+import FollowMeRail from "./FollowMeRail";
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden border border-green-700 w-screen h-screen flex items-center justify-center">
+    <section className="relative w-screen h-screen flex items-center justify-center">
       {/* Background pattern */}
       <svg
         className="absolute inset-0 w-full h-full -z-10"
@@ -18,7 +19,7 @@ const HeroSection = () => {
           cx="711.819"
           cy="372.562"
           r="308.334"
-          stroke="#E2E8F0"
+          stroke="#E2E8F1"
           strokeOpacity=".7"
         />
         <circle
@@ -47,25 +48,39 @@ const HeroSection = () => {
           stroke="#E2E8F0"
           strokeOpacity=".7"
         />
+        <circle
+          cx="1482.595"
+          cy="611.166"
+          r="308.334"
+          stroke="#E2E8F0"
+          strokeOpacity=".7"
+        />
       </svg>
 
       {/* Hero Content */}
       <div className=" flex flex-col md:flex-row items-center justify-between mt-20 px-4 md:px-16 lg:px-24 xl:px-32 pb-20 gap-12 md:gap-0">
         <div className="flex flex-col items-center md:items-start">
-          <div className="flex items-center gap-2 border border-slate-400 text-gray-500 text-xs rounded-full px-3 py-1 mb-6">
+          <div className="flex items-center gap-1 border border-slate-400 text-gray-500 text-xs rounded-full px-3 py-1 mb-6">
             <img
-              className="size-7 rounded-full border-2 border-white"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=50"
+              className="size-7 rounded-full border-2 bg-white  border-slate-100  "
+              src="/assets/node.svg"
+              alt=""
+            /><img
+              className="size-7 rounded-full border-2 -translate-x-3  bg-white  border-slate-100  "
+              src="/assets/react.svg"
               alt=""
             />
             <img
-              className="size-7 rounded-full border-2 border-white -translate-x-3"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50"
+              className="size-7 rounded-full border-2  -translate-x-6 bg-white border-slate-100 "
+              src="/assets/python.svg"
               alt=""
             />
-            <span className="-translate-x-3">
-              Join community of 1m+ founders
-            </span>
+            <img
+              className="size-7 rounded-full border-2  -translate-x-9 bg-white border-slate-100"
+              src="/assets/mongo.svg"
+              alt=""
+            />
+            <span className="-translate-x-3">From UI to deploy—end-to-end</span>
           </div>
           <h1 className="text-center md:text-left text-xl md:text-2xl font-medium leading-tight text-slate-900">
             --- Hello There
@@ -85,14 +100,15 @@ const HeroSection = () => {
             ]}
           />
           <p className="text-center md:text-left text-slate-700 mt-4 max-w-lg">
-Crafting dynamic websites, from UI design to deployment, with a knack for seamless user experiences.
+            Crafting dynamic websites, from UI design to deployment, with a
+            knack for seamless user experiences.
           </p>
           <div className="flex gap-4 mt-8">
             <button className="bg-pretty hover:bg-pretty text-white rounded-md px-7 h-11">
               My Resume
             </button>
             <button className="flex items-center gap-2 border border-slate-600 hover:bg-white/10 rounded-md px-6 h-11">
-              <Send2 size="23" className="text-slate-600" variant="Broken"/>
+              <Send2 size="23" className="text-slate-600" variant="Broken" />
               Contact me
             </button>
           </div>
@@ -108,6 +124,7 @@ Crafting dynamic websites, from UI design to deployment, with a knack for seamle
           />
         </div>
       </div>
+      <FollowMeRail />
     </section>
   );
 };

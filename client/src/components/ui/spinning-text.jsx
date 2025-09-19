@@ -21,7 +21,7 @@ export function SpinningText({
   children,
   duration = 10,
   reverse = false,
-  radius = 6,
+  radius = 7.5,
   transition,
   variants,
   className,
