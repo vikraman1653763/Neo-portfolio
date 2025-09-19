@@ -1,4 +1,8 @@
 import React from "react";
+import { HyperText } from "./ui/hyper-text";
+import { MorphingText } from "./ui/morphing-text";
+import Spinner from "./Spinner";
+import { Send2 } from "iconsax-reactjs";
 
 const HeroSection = () => {
   return (
@@ -10,11 +14,39 @@ const HeroSection = () => {
         fill="none"
       >
         <path stroke="#E2E8F0" strokeOpacity=".7" d="M-15.227 702.342H1439.7" />
-        <circle cx="711.819" cy="372.562" r="308.334" stroke="#E2E8F0" strokeOpacity=".7" />
-        <circle cx="16.942" cy="20.834" r="308.334" stroke="#E2E8F0" strokeOpacity=".7" />
-        <circle cx="161.942" cy="120.834" r="308.334" stroke="#E2E8F0" strokeOpacity=".7" />
-        <path stroke="#E2E8F0" strokeOpacity=".7" d="M-15.227 573.66H1439.7M-15.227 164.029H1439.7" />
-        <circle cx="782.595" cy="411.166" r="308.334" stroke="#E2E8F0" strokeOpacity=".7" />
+        <circle
+          cx="711.819"
+          cy="372.562"
+          r="308.334"
+          stroke="#E2E8F0"
+          strokeOpacity=".7"
+        />
+        <circle
+          cx="16.942"
+          cy="20.834"
+          r="308.334"
+          stroke="#E2E8F0"
+          strokeOpacity=".7"
+        />
+        <circle
+          cx="161.942"
+          cy="120.834"
+          r="308.334"
+          stroke="#E2E8F0"
+          strokeOpacity=".7"
+        />
+        <path
+          stroke="#E2E8F0"
+          strokeOpacity=".7"
+          d="M-15.227 573.66H1439.7M-15.227 147.029H1439.7"
+        />
+        <circle
+          cx="782.595"
+          cy="411.166"
+          r="308.334"
+          stroke="#E2E8F0"
+          strokeOpacity=".7"
+        />
       </svg>
 
       {/* Hero Content */}
@@ -31,32 +63,50 @@ const HeroSection = () => {
               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50"
               alt=""
             />
-            <span className="-translate-x-3">Join community of 1m+ founders</span>
+            <span className="-translate-x-3">
+              Join community of 1m+ founders
+            </span>
           </div>
-          <h1 className="text-center md:text-left text-5xl md:text-6xl font-medium leading-tight text-slate-900">
-            Intelligent AI tools built to help.
+          <h1 className="text-center md:text-left text-xl md:text-2xl font-medium leading-tight text-slate-900">
+            --- Hello There
           </h1>
+          <HyperText className="text-primary text-center md:text-left text-5xl md:text-6xl font-medium leading-tight">
+            Vikraman G
+          </HyperText>
+          <MorphingText
+            texts={[
+              "Fullstack Developer",
+              "Software Developer",
+              "Frontend Developer",
+              "Backend Developer",
+              "WebGIS Developer",
+              "MERN  Stack Developer",
+              "Freelancer",
+            ]}
+          />
           <p className="text-center md:text-left text-slate-700 mt-4 max-w-lg">
-            Unlock smarter workflows with AI tools designed to boost productivity, simplify tasks and help you do more with less effort.
+Crafting dynamic websites, from UI design to deployment, with a knack for seamless user experiences.
           </p>
           <div className="flex gap-4 mt-8">
             <button className="bg-pretty hover:bg-pretty text-white rounded-md px-7 h-11">
-              Get started
+              My Resume
             </button>
             <button className="flex items-center gap-2 border border-slate-600 hover:bg-white/10 rounded-md px-6 h-11">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1">
-                <path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 10.5" />
-                <rect x="2" y="6" width="14" height="12" rx="2" />
-              </svg>
-              Watch demo
+              <Send2 size="23" className="text-slate-600" variant="Broken"/>
+              Contact me
             </button>
           </div>
         </div>
-        <img
-          src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/hero-section-showcase-4.png"
-          alt="hero"
-          className="max-w-xs sm:max-w-sm lg:max-w-md"
-        />
+        <div className="hero-right relative">
+          <div className="absolute -top-10 -right-10 z-20">
+            <Spinner />
+          </div>
+          <img
+            src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/hero-section-showcase-4.png"
+            alt="hero"
+            className="max-w-xs sm:max-w-sm lg:max-w-md"
+          />
+        </div>
       </div>
     </section>
   );
