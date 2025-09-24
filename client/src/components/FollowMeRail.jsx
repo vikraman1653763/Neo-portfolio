@@ -9,7 +9,7 @@ export default function FollowMeRail({
     github: "https://github.com/your-handle",
   },
   className = "",
-  position = "sticky", // "sticky" keeps it within the hero bounds
+  position = "sticky", // "sticky"
 }) {
   const btn =
     "p-2 rounded-full border border-slate-300 bg-white text-primary hover:text-pretty " +
@@ -56,7 +56,7 @@ export default function FollowMeRail({
             </div>
 
             <span className="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 select-none
-                             [writing-mode:vertical-rl] [text-orientation:upright]">
+                             [writing-mode:vertical-rl] [text-orientation:upleft]">
               Follow me on
             </span>
           </div>

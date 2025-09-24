@@ -16,7 +16,7 @@ const App = () => {
       <TailedCursor 
   colors = {["#2d545e"]}    
         baseThickness={30}
-        speedMultiplier={0.4}
+        speedMultiplier={0.6}
         maxAge={600}
         enableFade={true}
         enableShaderEffect={false}

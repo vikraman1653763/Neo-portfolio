@@ -1,23 +1,32 @@
-import { useState, useEffect } from "react";
+// useIsSmallScreen.ts
+import { useEffect, useState } from "react";
+
+const MOBILE_BREAKPOINT = 768; // px
 
 const useIsSmallScreen = () => {
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
+  const getInitial = () =>
+    typeof window !== "undefined" ? window.innerWidth <= MOBILE_BREAKPOINT : false;
+
+  const [isSmall, setIsSmall] = useState(getInitial);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 768);
-    };
+    if (typeof window === "undefined") return;
 
-    // Add event listener for resize
-    window.addEventListener("resize", handleResize);
+    const onResize = () => setIsSmall(window.innerWidth <= MOBILE_BREAKPOINT);
+    window.addEventListener("resize", onResize);
+    // also handle orientation changes on mobile
+    window.addEventListener("orientationchange", onResize);
 
-    // Clean up the event listener on component unmount
+    // set once on mount in case SSR mismatch
+    onResize();
+
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("orientationchange", onResize);
     };
-  }, []); // The empty array ensures this effect runs once on mount and cleanup on unmount
+  }, []);
 
-  return isSmallScreen;
+  return isSmall;
 };
 
 export default useIsSmallScreen;

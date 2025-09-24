@@ -3,14 +3,14 @@ import { ScrollVelocityRow } from "./ui/scroll-based-velocity";
 
 const VelocityBanner = () => {
   const line =
-    "Dashboard • Admin Page • E-Commerce • Product Page • Web Page • CRM • Analytics • Portfolio • ";
+    "Dashboards • Admin • E-Commerce • Product Pages • Portfolios • CRM • Analytics • Real-time Chat • Secure Payments • Image Optimization • Task Manager • Expense Tracker • Business Sites • UI/UX • Hosting & Domains • Interactive Maps • On-Page SEO • ";
 
   return (
     <div className="relative w-full overflow-hidden">
       {/* MOBILE (xs) */}
       <div className="sm:hidden relative w-full h-24 overflow-hidden">
         <ScrollVelocityRow
-          baseVelocity={1.2} // a bit slower for mobile
+          baseVelocity={1.2}
           direction={1}
           className="
             pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2

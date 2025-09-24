@@ -2,31 +2,28 @@ import React, { useState, useEffect } from "react";
 import logo_icon from "/assets/logo.svg";
 import { useLocation } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
-import { FiSun, FiMoon } from "react-icons/fi";              // ✅ NEW
+import { FiSun, FiMoon } from "react-icons/fi";
 import ButtonGradient from "../buttons/ButtonGradient.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import useIsSmallScreen from "../hooks/useIsSmallScreen.js";
 import NavHoverLink from "./NavHoverLink.jsx";
-import { useAppContext } from "../context/AppContext.jsx";   // ✅ NEW
+import { useAppContext } from "../context/AppContext.jsx";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isSmall = useIsSmallScreen();
-  const { theme, setTheme } = useAppContext();               // ✅ NEW
-
-  const handleScroll = () => setScrolled(window.scrollY > 100);
+  const { theme, setTheme } = useAppContext();
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 100);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
-
-  const toggleTheme = () =>                                  // ✅ NEW
-    setTheme((t) => (t === "dark" ? "light" : "dark"));
+  const toggleMenu = () => setMenuOpen((p) => !p);
+  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 
   const navItems = [
     { label: "Home", path: "/" },
@@ -44,17 +41,37 @@ const Navbar = () => {
   return (
     <div className="fixed w-full z-50 flex justify-center items-center transition-all duration-500">
       <header
-        className={`flex items-center justify-between border border-white/20 backdrop-blur-sm transition-all duration-500 ${
-          scrolled
-            ? `bg-white translate-y-3 sm:translate-y-10 max-w-[1140px] w-[80%] sm:w-[1140px] rounded-2xl px-4 sm:px-8 py-2 sm:py-2 ${
-                menuOpen && "rounded-b-none"
-              }`
-            : "bg-white sm:translate-y-0 px-7 sm:px-10 py-4 max-w-full w-full sm:py-4"
-        }`}
+        className={`flex items-center justify-between backdrop-blur-xl transition-all duration-500
+          ${
+            scrolled
+              ? `
+                translate-y-3 sm:translate-y-10 max-w-[1140px] w-[80%] sm:w-[1140px] rounded-2xl px-4 sm:px-8 py-2 sm:py-2
+                bg-white/40 text-slate-800
+                border border-white/30
+                shadow-[0_6px_24px_rgba(2,6,23,0.06)] 
+                dark:bg-slate-900/70 dark:text-slate-100
+                dark:border-none
+                dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)]
+                ${menuOpen && "rounded-b-none"}
+              `
+              : `
+                sm:translate-y-0 px-7 sm:px-10 py-4 max-w-full w-full sm:py-4
+                bg-white/50 text-slate-800
+                border border-white/30
+                shadow-[0_6px_24px_rgba(2,6,23,0.01)]
+                dark:bg-background dark:text-slate-100
+                dark:border-none
+                dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)]
+              `
+          }`}
       >
-        <img src={logo_icon} className="w-[120px] sm:w-[200px] h-[36px]" alt="Logo" />
+        <img
+          src={logo_icon}
+          className="w-[120px] sm:w-[200px] h-[36px] dark:brightness-110 dark:contrast-125"
+          alt="Logo"
+        />
 
-        {/* Desktop Nav with hover effect */}
+        {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6 items-center">
           {navItems.map(({ label, path }) => {
             const isActive = location.pathname === path;
@@ -62,7 +79,13 @@ const Navbar = () => {
               <NavHoverLink
                 key={label}
                 to={path}
-                className={`${isActive ? "text-pretty font-semibold" : scrolled ? "text-slate-700" : "text-[#525F81]"} hover:text-pretty`}
+                className={`${
+                  isActive
+                    ? "text-pretty font-semibold"
+                    : scrolled
+                    ? "text-slate-700 dark:text-slate-200"
+                    : "text-[#525F81] dark:text-slate-300"
+                } hover:text-pretty dark:hover:text-pretty`}
               >
                 {label}
               </NavHoverLink>
@@ -70,14 +93,22 @@ const Navbar = () => {
           })}
         </nav>
 
-        {/* Right side controls (theme toggle + CTA on desktop) */}
+        {/* Right controls */}
         <div className="flex items-center gap-3">
-          {/* ✅ Theme toggle button */}
+          {/* Theme toggle */}
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="p-2 rounded-full border border-slate-200 hover:border-slate-300 transition text-slate-700"
+            className={`
+              p-2 rounded-full transition
+              bg-white/60 backdrop-blur-md text-slate-700 hover:bg-white/80
+              border border-white/30
+              shadow-[0_2px_10px_rgba(2,6,23,0.08)]
+              dark:bg-slate-900/70 dark:text-slate-200 dark:hover:bg-slate-900/80
+              dark:border-none
+              dark:shadow-[0_6px_16px_rgba(0,0,0,0.35)]
+            `}
           >
             {theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />}
           </button>
@@ -85,7 +116,11 @@ const Navbar = () => {
           {!isSmall && <ButtonGradient onClick={() => {}}>Hire me</ButtonGradient>}
 
           {/* Mobile Menu Toggle */}
-          <button onClick={toggleMenu} aria-label="Toggle menu" className="md:hidden">
+          <button
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            className="md:hidden text-slate-800 dark:text-slate-200"
+          >
             {menuOpen ? <HiOutlineX size={24} /> : <HiOutlineMenu size={24} />}
           </button>
         </div>
@@ -100,9 +135,15 @@ const Navbar = () => {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className={`absolute top-[66px] shadow-md rounded-b-2xl md:hidden z-40 bg-white border-t-2 border-pretty w-full ${
-              scrolled ? "max-w-[80%]" : "max-w-[1140px]"
-            }`}
+            className={`absolute top-[66px] rounded-b-2xl md:hidden z-40 w-full
+              border-t-2 border-pretty
+              bg-white/50 backdrop-blur-xl
+              shadow-[0_10px_30px_rgba(2,6,23,0.08)]
+              ${scrolled ? "max-w-[80%]" : "max-w-[1140px]"}
+              dark:bg-slate-900/70 dark:backdrop-blur-xl
+              dark:border-none
+              dark:shadow-[0_16px_40px_rgba(0,0,0,0.35)]
+            `}
           >
             <div className="flex flex-col gap-4 py-3 px-4">
               {navItems.map(({ label, path }) => {
@@ -111,7 +152,11 @@ const Navbar = () => {
                   <NavHoverLink
                     key={label}
                     to={path}
-                    className={`${isActive ? "text-pretty font-semibold" : "text-slate-600"} hover:text-pretty`}
+                    className={`${
+                      isActive
+                        ? "text-pretty font-semibold"
+                        : "text-slate-700 dark:text-slate-300"
+                    } hover:text-pretty`}
                     onClick={() => setMenuOpen(false)}
                   >
                     {label}
