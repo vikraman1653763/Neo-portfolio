@@ -3,7 +3,8 @@ import HeroSection from "../components/HeroSection";
 import VelocityBanner from "@/components/SlantedVelocityBanner";
 import HeroBgSvg from "@/components/HeroBgSvg";
 import Orbit from "@/components/Orbit";
-import TechArsenal from "@/components/TechArsenal";
+import TechStackGrid from "@/components/TechStackGrid";
+import TechArsenalOrbit from "@/components/TechArsenal";
 
 const Home = () => {
   return (
@@ -11,10 +12,8 @@ const Home = () => {
         <HeroSection />
         <VelocityBanner />
          <HeroBgSvg />
-        <Orbit/>
-        <TechArsenal
-  slugs={["react", "nodejs", "tailwindcss", "postgresql"]}
-/>
+        <TechArsenalOrbit/>
+        <TechStackGrid/>
 
     </div>
   );

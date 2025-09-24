@@ -1,12 +1,24 @@
 import React from "react";
-import { File, Settings, Search } from "lucide-react";
+import {
+  Monitor, Palette,
+  Code2, Terminal, GitBranch,
+  Server, Database, Shield, Settings
+} from "lucide-react";
 
-/** Perfectly centered orbit layer with icon centering + SVG rings */
+// import {
+//   Monitor, Layout, Palette, PenTool,
+//   Code2, Terminal, GitBranch, Braces,
+//   Server, Database, CloudCog,
+//   Settings, Wrench, Cog, SlidersHorizontal,
+//   Shield, Eye, KeyRound, Lock, Cpu,Zap
+// } from "lucide-react";
+
+/** Single ring of evenly spaced rotating icons */
 function OrbitLayer({
-  radius = 180,
+  radius = 90,
   duration = 18,
   reverse = false,
-  size = 520,
+  size = 600,
   iconBox = 44,
   showRing = true,
   children,
@@ -20,16 +32,17 @@ function OrbitLayer({
     >
       {showRing && (
         <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden>
-          <circle cx="50%" cy="50%" r={radius} fill="none" stroke="currentColor"
-                  className="text-slate-300/40" strokeWidth="1" />
+          <circle
+            cx="50%" cy="50%" r={radius} fill="none"
+            stroke="currentColor" className="text-slate-300/40" strokeWidth="1"
+          />
         </svg>
       )}
 
-      {/* spinner carrying icons */}
       <div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
         style={{
-          width: 2,                      // tiny non-zero box
+          width: 2,
           height: 2,
           animation: `${reverse ? "orbitReverse" : "orbit"} ${duration}s linear infinite`,
           transformOrigin: "50% 50%",
@@ -57,7 +70,6 @@ function OrbitLayer({
         })}
       </div>
 
-      {/* inline keyframes: define both from & to */}
       <style>{`
         @keyframes orbit {
           from { transform: rotate(0deg) translateZ(0.001px); }
@@ -71,25 +83,31 @@ function OrbitLayer({
     </div>
   );
 }
+
 export default function Orbit() {
-  const iconCls = "h-7 w-7 text-slate-800 dark:text-slate-200"; // consistent size
+  const iconCls = "h-7 w-7 text-slate-800 dark:text-slate-200";
 
   return (
-    <div className="relative mx-auto w-full max-w-[560px] aspect-square overflow-visible">
-      {/* inner ring */}
-      <OrbitLayer radius={120} duration={14} iconBox={44}>
-        <Search className={iconCls} />
-        <Settings className={iconCls} />
-        <File className={iconCls} />
-        <Settings className={iconCls} />
+    <div className="relative mx-auto w-full max-w-[600px] aspect-square overflow-visible">
+      {/* Ring 1 – Inner (2 icons) */}
+      <OrbitLayer radius={80} duration={16} iconBox={44}>
+        <Monitor className={iconCls} />
+        <Palette className={iconCls} />
       </OrbitLayer>
 
-      {/* outer ring (reverse) */}
-      <OrbitLayer radius={180} duration={18} reverse iconBox={44}>
-        <File className={iconCls} />
-        <Search className={iconCls} />
+      {/* Ring 2 – Middle (3 icons) */}
+      <OrbitLayer radius={150} duration={22} reverse iconBox={44}>
+        <Code2 className={iconCls} />
+        <Terminal className={iconCls} />
+        <GitBranch className={iconCls} />
+      </OrbitLayer>
+
+      {/* Ring 3 – Outer (4 icons) */}
+      <OrbitLayer radius={220} duration={28} iconBox={44}>
+        <Server className={iconCls} />
+        <Database className={iconCls} />
+        <Shield className={iconCls} />
         <Settings className={iconCls} />
-        <File className={iconCls} />
       </OrbitLayer>
     </div>
   );

@@ -8,7 +8,9 @@ function easeOutCubic(t) {
 
 export function IconCloud({
   icons,
-  images
+  images,
+  width,
+  height
 }) {
   const canvasRef = useRef(null);
   const [iconPositions, setIconPositions] = useState([]);
@@ -93,9 +95,9 @@ export function IconCloud({
       const z = Math.sin(phi) * r;
 
       newIcons.push({
-        x: x * 100,
-        y: y * 100,
-        z: z * 100,
+        x: x * 50,
+        y: y * 50,
+        z: z * 50,
         scale: 1,
         opacity: 1,
         id: i,
@@ -282,13 +284,13 @@ export function IconCloud({
   return (
     <canvas
       ref={canvasRef}
-      width={400}
-      height={400}
+      width={width}
+      height={height}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      className="rounded-lg"
+      className="rounded-lg "
       aria-label="Interactive 3D Icon Cloud"
       role="img" />
   );
