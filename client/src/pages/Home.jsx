@@ -2,9 +2,10 @@ import React from "react";
 import HeroSection from "../components/HeroSection";
 import VelocityBanner from "@/components/SlantedVelocityBanner";
 import HeroBgSvg from "@/components/HeroBgSvg";
-import Orbit from "@/components/Orbit";
 import TechStackGrid from "@/components/TechStackGrid";
 import TechArsenalOrbit from "@/components/TechArsenal";
+import GithubCalendarSection from "@/components/GithubCalendar";
+import AcademicJourney from "@/components/AcademicJourney";
 
 const Home = () => {
   return (
@@ -14,7 +15,8 @@ const Home = () => {
          <HeroBgSvg />
         <TechArsenalOrbit/>
         <TechStackGrid/>
-
+      <GithubCalendarSection username="vikraman1653763" startYear={2023} />
+<AcademicJourney/>
     </div>
   );
 };

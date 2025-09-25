@@ -2,8 +2,8 @@
 import React from "react";
 import { IconCloud } from "./ui/icon-cloud";
 import { useAppContext } from "@/context/AppContext";
+import { GiFlowerEmblem } from "react-icons/gi";
 
-// ---- Groups (each renders its own IconCloud) ----
 const techGroups = [
   {
     title: "Frontend",
@@ -68,7 +68,6 @@ const techGroups = [
   },
 ];
 
-// ---- Dark-mode replacements for file-based icons that vanish on dark ----
 const darkReplacements = {
   "/assets/openai.svg": "/assets/openai-white.svg",
   "/assets/github.svg": "/assets/github-white.svg",
@@ -82,32 +81,47 @@ const TechStackGrid = () => {
   const { theme } = useAppContext();
 
   return (
-    <section className="">
+    <section>
       <div className="mx-auto w-11/12 max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {techGroups.map((group) => {
             const images =
               theme === "dark"
                 ? group.images.map((src) => darkReplacements[src] ?? src)
                 : group.images;
 
+            const descriptionWithIcons = group.description
+              .split(",")
+              .map((item, idx, arr) => (
+                <React.Fragment key={idx}>
+                  <span>{item.trim()}</span>
+                  {idx < arr.length - 1 && (
+                    <GiFlowerEmblem className="inline align-middle mx-2 text-pretty dark:text-primary" />
+                  )}
+                </React.Fragment>
+              ));
+
             return (
               <div
                 key={group.title}
-                className="flex flex-col items-center rounded-2xl border border-pretty/30 bg-pretty/5 shadow-lg transition-colors hover:border-pretty/60 dark:border-primary/30 dark:bg-primary/5 dark:hover:border-primary/60"
+                className="flex flex-col items-center rounded-2xl  shadow-lg transition-colors hover:border-pretty/60  dark:hover:border-primary/60 border border-pretty/40 bg-pretty/10  dark:border-primary/40 dark:bg-primary/10"
               >
-                <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-pretty/40 bg-pretty/10 pt-12 pb-3 dark:border-primary/40 dark:bg-primary/10">
-                  {/* Slanted tag (top-left) */}
-                  <div className="pointer-events-none absolute -left-15 top-10 z-10 -rotate-45   ">
-                    <span className="inline-block rounded-md bg-primary dark:bg-pretty px-15 py-2 text-sm font-semibold uppercase tracking-[5px] text-white shadow-md ">
+                <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-xl pt-12 pb-1 ">
+                  {/* Slanted tag */}
+                  <div className="pointer-events-none absolute -left-15 top-10 z-10 -rotate-45">
+                    <span className="inline-block rounded-md bg-primary dark:bg-pretty px-15 py-2 text-sm font-semibold uppercase tracking-[5px] text-white shadow-md">
                       {group.title}
                     </span>
                   </div>
 
-                  <IconCloud images={images} width={200} height={200} />
+                  {/* Cloud icons (block removes baseline gap) */}
+                  <div className="block leading-none">
+                    <IconCloud images={images} width={200} height={200} />
+                  </div>
 
-                  <p className="mt-2 px-4 text-center text-gray-600 dark:text-gray-300">
-                    {group.description}
+                  {/* Description with flower icons */}
+                  <p className="m-2 px-4 text-center text-gray-600 dark:text-gray-300 leading-tight">
+                    {descriptionWithIcons}
                   </p>
                 </div>
               </div>
