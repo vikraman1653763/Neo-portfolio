@@ -13,14 +13,7 @@ const App = () => {
     <div className="cursor-none cursor-none-all">
       <Navbar />
       <NegativeCursor/>
-      <TailedCursor 
-  colors = {["#2d545e"]}    
-        baseThickness={30}
-        speedMultiplier={0.6}
-        maxAge={600}
-        enableFade={true}
-        enableShaderEffect={false}
-      />
+      <TailedCursor/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

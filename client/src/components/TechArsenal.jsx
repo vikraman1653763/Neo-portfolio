@@ -9,7 +9,7 @@ const TechArsenalOrbit = () => {
   const { theme } = useAppContext();
 
   return (
-    <section className="relative w-full py-0 ">
+    <section className="relative w-full  ">
       <div className="relative mx-auto flex w-11/12 max-w-7xl flex-col md:flex-row items-center justify-between gap-12">
         {/* Left side - tech icons */}
         <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden ">
