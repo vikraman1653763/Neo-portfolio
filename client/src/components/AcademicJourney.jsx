@@ -2,7 +2,8 @@
 import React from "react";
 import { GiGraduateCap } from "react-icons/gi";
 import { BorderBeam } from "./ui/border-beam";
-
+import { FaAward } from "react-icons/fa";
+import { GiMedal } from "react-icons/gi";
 const AcademicJourney = () => {
   const education = [
     {
@@ -38,7 +39,14 @@ const AcademicJourney = () => {
                   size={150}
                   className="-rotate-45 absolute right-0 -bottom-8 text-primary dark:text-pretty opacity-40 dark:opacity-20 pointer-events-none"
                 />
-
+                <FaAward
+                  size={30}
+                  className=" absolute left-30 top-5 -rotate-45 text-primary dark:text-pretty opacity-40 dark:opacity-20 pointer-events-none"
+                />
+                <GiMedal
+                  size={50}
+                  className=" absolute -left-2 bottom-5 -rotate-15 text-primary dark:text-pretty opacity-40 dark:opacity-20 pointer-events-none"
+                />
                 {/* Logo left */}
                 <div className="flex-shrink-0 w-28 h-28 rounded-full border border-pretty dark:border-primary bg-white flex items-center justify-center overflow-hidden relative z-10">
                   <img
