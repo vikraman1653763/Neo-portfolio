@@ -1,9 +1,8 @@
-
 // ==========================
 // Projects.jsx (React + TailwindCSS)
 // ==========================
 import React from "react";
-import { ProjectCard } from "./ProjectCard";
+import { ProjectCard } from "./ProjectCard.jsx";
 
 const projects = {
   main: [
@@ -36,7 +35,8 @@ const projects = {
         "Cloudinary",
         "Tailwind CSS",
         "Redux",
-      ],
+      ],      isDemo: true,
+
     },
     {
       title: "Cloud-Powered Chat App",
@@ -51,7 +51,8 @@ const projects = {
         "Socket.io",
         "Cloudinary",
         "JWT",
-      ],
+      ],      isDemo: true,
+
     },
     {
       title: "Think ITech",
@@ -128,6 +129,7 @@ const projects = {
       link: "https://www.linkedin.com/in/vikraman-g/overlay/1714546205584/single-media-viewer/?profileId=ACoAAEAwQyMBGlmKid_VvSAIQYSCrS6eBSdYaXY",
       image: "/assets/webgis.webp",
       techBadges: ["Python", "Flask", "MapBox", "PostgreSql", "Geoserver"],
+      ctaLabel: "View Certificate",
     },
     {
       title: "Full Stack Developer Intern",
@@ -136,6 +138,7 @@ const projects = {
       link: "https://www.linkedin.com/in/vikraman-g/overlay/1708329257687/single-media-viewer/?profileId=ACoAAEAwQyMBGlmKid_VvSAIQYSCrS6eBSdYaXY",
       image: "/assets/aitool.webp",
       techBadges: ["Jinja", "Flask", "Python", "MySql"],
+      ctaLabel: "View Certificate",
     },
     {
       title: "Web Developer Intern",
@@ -144,24 +147,36 @@ const projects = {
       link: "https://www.linkedin.com/in/vikraman-g/overlay/1708328853862/single-media-viewer/?profileId=ACoAAEAwQyMBGlmKid_VvSAIQYSCrS6eBSdYaXY",
       image: "/assets/watch.webp",
       techBadges: ["React", "Bootstrap", "CSS", "Git", "Netlify"],
+      ctaLabel: "View Certificate",
     },
   ],
 };
 
 export default function Projects() {
   return (
-    <section className="py-16 bg-gray-50 dark:bg-slate-800" id="projects">
+    <section className="py-16 " id="projects">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">Projects</h2>
+        <div className="w-full text-right">
+          <p className="text-sm uppercase tracking-wider text-primary dark:text-white">
+            — Explore My Works
+          </p>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-primary dark:text-pretty max-sm:text-3xl">
+            Projects
+          </h2>
+        </div>
 
-        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">Main Projects</h3>
+        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+          Main Projects
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.main.map((p) => (
             <ProjectCard key={p.title} {...p} />
           ))}
         </div>
 
-        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 my-10">Internship</h3>
+        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 my-10">
+          Internship
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.internship.map((p) => (
             <ProjectCard key={p.title} {...p} />

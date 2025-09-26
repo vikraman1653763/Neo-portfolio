@@ -3,8 +3,8 @@ import { useId } from "react"
 import { cn } from "@/lib/utils"
 
 export function GridPattern({
-  width = 40,
-  height = 40,
+  width = 80,
+  height = 80,
   x = -1,
   y = -1,
   strokeDasharray = "0",
@@ -18,7 +18,7 @@ export function GridPattern({
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-red-400 stroke-pretty/20",
+        "pointer-events-none absolute inset-0 h-full w-full fill-red-400 stroke-pretty/20 -z-1",
         className
       )}
       {...props}>

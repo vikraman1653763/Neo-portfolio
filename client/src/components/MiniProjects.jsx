@@ -68,7 +68,7 @@ const MiniProjects = () => {
       {/* Left column : heading + image */}
       <div className="flex-1 flex flex-col items-start">
         <p className="text-sm uppercase tracking-wider text-primary dark:text-white">
-          — Explore My Works
+          — Built with ❤️ and open-source tools
         </p>
 
         <h2 className="flex-1/2 text-4xl md:text-5xl font-extrabold text-primary dark:text-pretty max-sm:text-3xl">

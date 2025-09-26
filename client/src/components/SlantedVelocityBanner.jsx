@@ -2,9 +2,10 @@ import React from "react";
 import { ScrollVelocityRow } from "./ui/scroll-based-velocity";
 
 const VelocityBanner = () => {
-  const line =
+  const line_1 =
     "Dashboards • Admin • E-Commerce • Product Pages • Portfolios • CRM • Analytics • Real-time Chat • Secure Payments • Image Optimization • Task Manager • Expense Tracker • Business Sites • UI/UX • Hosting & Domains • Interactive Maps • On-Page SEO • ";
-
+  const line_2 =
+    "Image Optimization • Task Manager • Expense Tracker • Business Sites • UI/UX • Hosting & Domains • Interactive Maps • On-Page SEO • Dashboards • Admin • E-Commerce • Product Pages • Portfolios • CRM • Analytics • Real-time Chat • Secure Payments • ";
   return (
     <div className="relative w-full overflow-hidden">
       {/* MOBILE (xs) */}
@@ -31,7 +32,7 @@ const VelocityBanner = () => {
               "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
           }}
         >
-          {line}
+          {line_1}
         </ScrollVelocityRow>
       </div>
 
@@ -53,7 +54,7 @@ const VelocityBanner = () => {
             ring-1 ring-black/10 dark:ring-white/10
           "
         >
-          {line}
+          {line_2}
         </ScrollVelocityRow>
 
         {/* strip 2 */}
@@ -72,7 +73,7 @@ const VelocityBanner = () => {
             ring-1 ring-black/10 dark:ring-white/10
           "
         >
-          {line}
+          {line_1}
         </ScrollVelocityRow>
       </div>
     </div>

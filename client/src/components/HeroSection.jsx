@@ -7,6 +7,7 @@ import FollowMeRail from "./FollowMeRail";
 import Modal from "@/components/Modal";
 import PDFViewer from "./PDFViewer";
 import useIsSmallScreen from "@/hooks/useIsSmallScreen";
+import { useAppContext } from "@/context/AppContext";
 
 const RESUME_URL = "/assets/resume.pdf";
 
@@ -21,7 +22,7 @@ const HeroSection = () => {
       setResumeOpen(true);
     }
   };
-
+const {theme} = useAppContext()
   return (
     // prevent any child from causing horizontal scroll
     <section className="relative h-screen w-screen  flex items-center justify-center overflow-x-hidden overflow-y-visible ">
@@ -59,7 +60,7 @@ const HeroSection = () => {
           />
 
           <p className="text-center md:text-left text-slate-700 dark:text-slate-300 mt-4 max-w-lg">
-            Crafting dynamic websites, from UI design to deployment, with a knack for seamless user experiences.
+            Crafting dynamic websites, from UI  design to deployment, with a knack for seamless user experiences.
           </p>
 
           <div className="flex gap-4 mt-8">
