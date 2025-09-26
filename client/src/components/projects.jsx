@@ -35,8 +35,8 @@ const projects = {
         "Cloudinary",
         "Tailwind CSS",
         "Redux",
-      ],      isDemo: true,
-
+      ],
+      isDemo: true,
     },
     {
       title: "Cloud-Powered Chat App",
@@ -51,17 +51,10 @@ const projects = {
         "Socket.io",
         "Cloudinary",
         "JWT",
-      ],      isDemo: true,
+      ],
+      isDemo: true,
+    },
 
-    },
-    {
-      title: "Think ITech",
-      description:
-        "Designed and deployed a modern business website for a tech services firm, focusing on responsive UI, clean layout, and optimized performance.",
-      link: "https://thinkitech.com",
-      image: "/assets/think3.webp",
-      techBadges: ["React", "Framer Motion", "SEO", "Plesk"],
-    },
     {
       title: "Task Manager Application",
       description:
@@ -80,6 +73,26 @@ const projects = {
       ],
       isDemo: true,
     },
+
+    {
+      title: "Conversational AI Platform",
+      description:
+        "Built a real-time conversational AI web app powered by OpenAI APIs for natural dialogue and smart tool calling. Integrated ImageKit for fast image optimization and Cloudinary for reliable media storage and delivery. Includes secure JWT authentication and responsive UI.",
+      link: "https://your-conversational-ai-link.com",
+      image: "/assets/gpt.webp",
+      techBadges: [
+        "React",
+        "Node",
+        "MongoDB",
+        "OpenAI",
+        "ImageKit",
+        "Cloudinary",
+        "JWT",
+        "WebSockets",
+      ],
+      isDemo: true,
+    },
+
     {
       title: "Expense Tracker Application",
       description:
@@ -96,6 +109,14 @@ const projects = {
         "Axios",
       ],
       isDemo: true,
+    },
+    {
+      title: "Think ITech",
+      description:
+        "Designed and deployed a modern business website for a tech services firm, focusing on responsive UI, clean layout, and optimized performance.",
+      link: "https://thinkitech.com",
+      image: "/assets/think3.webp",
+      techBadges: ["React", "Framer Motion", "SEO", "Plesk"],
     },
     {
       title: "DragonTech Solutions",
@@ -154,10 +175,10 @@ const projects = {
 
 export default function Projects() {
   return (
-    <section className="py-16 " id="projects">
+    <section className="py-16" id="projects">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="w-full text-right">
-          <p className="text-sm uppercase tracking-wider text-primary dark:text-white">
+        <div className="w-full text-right  z-high  ">
+          <p className="text-sm uppercase tracking-wider text-primary dark:text-white ">
             — Explore My Works
           </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-primary dark:text-pretty max-sm:text-3xl">

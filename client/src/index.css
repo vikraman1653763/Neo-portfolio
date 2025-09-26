@@ -233,7 +233,11 @@
   border-radius: 99px;
   transition: transform 0.25s ease-out, background-color 0.2s ease-in;
 }
-
+.z-high{
+ 
+  z-index: 1 !important;
+position: relative;
+}
 /* Responsive (optional) */
 @media (max-width: 700px) {
   .yc-tabs {

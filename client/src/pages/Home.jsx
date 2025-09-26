@@ -22,19 +22,18 @@ const Home = () => {
       <AcademicJourney />
 
       <div className=" relative">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white blur-2xl   rounded-full pointer-events-none" />
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white blur-2xl   rounded-full pointer-events-none" />  
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white blur-2xl   rounded-full pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-64 h-64 bg-white blur-2xl   rounded-full pointer-events-none" />
-          <div className="absolute top-0 w-full h-20 bg-white  border-2 blur-2xl  rounded-full pointer-events-none" />
-          <div className="absolute bottom-0 w-full h-20 bg-white  border-2 blur-2xl  rounded-full pointer-events-none" />
-          <div className="absolute left-0 w-20 h-full bg-white  border-2 blur-2xl  rounded-full pointer-events-none" />
-          <div className="absolute right-0 w-20 h-full bg-white  border-2 blur-2xl  rounded-full pointer-events-none" />
-
-        <Projects />
+        <div className="absolute top-0 left-0 w-64 h-64 bg-background blur-2xl   rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-background blur-2xl   rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-background blur-2xl   rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-background blur-2xl   rounded-full pointer-events-none" />
+        <div className="absolute top-0 w-full h-20 bg-background  border-2 blur-2xl  rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 w-full h-20 bg-background  border-2 blur-2xl  rounded-full pointer-events-none" />
+        <div className="absolute left-0 w-20 h-full bg-background  border-2 blur-2xl  rounded-full pointer-events-none" />
+        <div className="absolute right-0 w-20 h-full bg-background  border-2 blur-2xl  rounded-full pointer-events-none" />
         <GridPattern />
-      </div>
+        <Projects />
         <MiniProjects />
+      </div>
     </div>
   );
 };

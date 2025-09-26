@@ -2,6 +2,7 @@ import { useAppContext } from "@/context/AppContext";
 import React from "react";
 import { IoIosLink } from "react-icons/io";
 import { BsGithub } from "react-icons/bs";
+import { motion, AnimatePresence } from "framer-motion";
 
 const MiniProjects = () => {
   const [openIndex, setOpenIndex] = React.useState(0);       // start at first project
@@ -63,15 +64,17 @@ const MiniProjects = () => {
     return () => clearInterval(id);
   }, [paused, miniProjects.length]);
 
+
+
   return (
-    <div className="max-w-6xl mx-auto px-4 md:px-5 flex flex-col md:flex-row gap-8">
+    <div className="max-w-6xl mx-auto px-4 md:px-5 flex flex-col md:flex-row gap-8  z-high sm:h-120 backdrop-blur-[2px] bg-white/10 dark:bg-background/10 rounded-2xl p-5 ">
       {/* Left column : heading + image */}
-      <div className="flex-1 flex flex-col items-start">
+      <div className="flex-1 flex flex-col items-start  z-high">
         <p className="text-sm uppercase tracking-wider text-primary dark:text-white">
-          — Built with ❤️ and open-source tools
+          — Built with ❤️ 
         </p>
 
-        <h2 className="flex-1/2 text-4xl md:text-5xl font-extrabold text-primary dark:text-pretty max-sm:text-3xl">
+        <h2 className=" py-5 text-4xl md:text-5xl font-extrabold text-primary dark:text-pretty max-sm:text-3xl">
           Mini Projects
         </h2>
 
@@ -81,11 +84,28 @@ const MiniProjects = () => {
           creative approach.
         </p>
 
-        <img
-          className="w-full max-w-md rounded-xl object-cover"
-          src={miniProjects[openIndex].image}
-          alt={miniProjects[openIndex].title}
-        />
+        {/* Image container with AnimatePresence */}
+      {/* Image container with AnimatePresence and skew motion */}
+<div className="relative w-full max-w-md h-64 md:h-72 rounded-xl overflow-hidden">
+  <AnimatePresence mode="wait" initial={false}>
+    <motion.img
+      key={openIndex} // triggers exit/enter
+      src={miniProjects[openIndex].image}
+      alt={miniProjects[openIndex].title}
+      className=" border-2 border-primary dark:border-pretty absolute inset-0 w-full h-full object-cover rounded-xl"
+      variants={{
+        initial: { opacity: 0 , x:300 }, // enter from top with slight skew
+        animate: { opacity: 1,x:0},
+        exit: { opacity: 0,x:-300},      // exit down with opposite skew
+      }}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ duration: 0.45, ease: "easeOut" }}
+    />
+  </AnimatePresence>
+</div>
+
       </div>
 
       {/* Right column : projects list */}
@@ -100,7 +120,7 @@ const MiniProjects = () => {
             className="border-b border-slate-200 py-4 cursor-pointer"
             onClick={() => {
               hasInteractedRef.current = true; // stop auto-rotate after first user click
-              setOpenIndex(openIndex === index ? index : index);
+              setOpenIndex(index);
             }}
           >
             <div className="flex items-center justify-between">
@@ -112,7 +132,9 @@ const MiniProjects = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className={`${
-                  openIndex === index ? "rotate-180 border-x rounded-full border-primary dark:border-pretty" : ""
+                  openIndex === index
+                    ? "rotate-180 border-x rounded-full border-primary dark:border-pretty"
+                    : ""
                 } transition-all duration-500 ease-in-out`}
               >
                 <path
