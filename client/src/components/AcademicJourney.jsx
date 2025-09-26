@@ -14,18 +14,18 @@ const bgIcons = [
 const AcademicJourney = () => {
   const education = [
     {
-      degree: "M.Sc. in Computer Science",
-      college: "University of Madras",
-      logo: "/assets/unom.webp",
+      degree: "B.Sc. in Computer Science",
+      logo: "/assets/egs.webp",
       alt: "University of Madras Logo",
+      college: "E.G.S. Pillay Arts and Science College",
       period: "2019 – 2022",
     },
     {
-      degree: "B.Sc. in Computer Science",
-      college: "E.G.S. Pillay Arts and Science College",
-      logo: "/assets/egs.webp",
-      alt: "E.G.S. Pillay College Logo",
+      logo: "/assets/unom.webp",
       period: "2022 – 2024",
+      degree: "M.Sc. in Computer Science",
+      college: "University of Madras",
+      alt: "E.G.S. Pillay College Logo",
     },
   ];
 
@@ -70,7 +70,7 @@ const AcademicJourney = () => {
   };
 
   return (
-    <section className="w-full py-12 bg-white dark:bg-[#0d1117]">
+    <section className="w-full py-12 ">
       <div className="max-w-5xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center text-primary dark:text-white mb-12">
           My Academic Journey
@@ -92,7 +92,7 @@ const AcademicJourney = () => {
                       <Comp
                         key={i}
                         size={size}
-                        className="absolute text-primary dark:text-pretty opacity-40 dark:opacity-20 pointer-events-none"
+                        className="absolute text-primary dark:text-pretty opacity-20 dark:opacity-20 pointer-events-none"
                         style={{
                           top: `${p.top}%`,
                           left: `${p.left}%`,

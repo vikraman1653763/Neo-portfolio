@@ -1,29 +1,25 @@
+// components/nav/Navbar.jsx
 import React, { useState, useEffect } from "react";
 import logo_icon from "/assets/logo.svg";
 import { useLocation } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
-import { FiSun, FiMoon } from "react-icons/fi";
 import ButtonGradient from "../buttons/ButtonGradient.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import useIsSmallScreen from "../hooks/useIsSmallScreen.js";
 import NavHoverLink from "./NavHoverLink.jsx";
-import { useAppContext } from "../context/AppContext.jsx";
+import { AnimatedThemeToggler } from "./ui/animated-theme-toggler.jsx";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isSmall = useIsSmallScreen();
-  const { theme, setTheme } = useAppContext();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 100);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const toggleMenu = () => setMenuOpen((p) => !p);
-  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 
   const navItems = [
     { label: "Home", path: "/" },
@@ -95,29 +91,14 @@ const Navbar = () => {
 
         {/* Right controls */}
         <div className="flex items-center gap-3">
-          {/* Theme toggle */}
-          <button
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className={`
-              p-2 rounded-full transition
-              bg-white/60 backdrop-blur-md text-slate-700 hover:bg-white/80
-              border border-white/30
-              shadow-[0_2px_10px_rgba(2,6,23,0.08)]
-              dark:bg-slate-900/70 dark:text-slate-200 dark:hover:bg-slate-900/80
-              dark:border-none
-              dark:shadow-[0_6px_16px_rgba(0,0,0,0.35)]
-            `}
-          >
-            {theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />}
-          </button>
+          {/* Theme toggle (no wrapper button) */}
+          <AnimatedThemeToggler />
 
           {!isSmall && <ButtonGradient onClick={() => {}}>Hire me</ButtonGradient>}
 
           {/* Mobile Menu Toggle */}
           <button
-            onClick={toggleMenu}
+            onClick={() => setMenuOpen((p) => !p)}
             aria-label="Toggle menu"
             className="md:hidden text-slate-800 dark:text-slate-200"
           >
