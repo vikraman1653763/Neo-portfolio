@@ -79,9 +79,7 @@ const MiniProjects = () => {
         </h2>
 
         <p className="text-base text-slate-500 mb-7 text-center md:text-left dark:text-slate-300 max-w-lg">
-          A curated collection of my mini projects, featuring key highlights and
-          brief overviews that showcase their purpose, functionality, and
-          creative approach.
+          A selection of small but meaningful projects I’ve built to explore new ideas and sharpen my skills—quick experiments that taught me a lot and were fun to create.
         </p>
 
         {/* Image container with AnimatePresence */}

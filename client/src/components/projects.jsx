@@ -3,6 +3,7 @@
 // ==========================
 import React from "react";
 import { ProjectCard } from "./ProjectCard.jsx";
+import { motion } from "framer-motion";
 
 const projects = {
   main: [
@@ -177,8 +178,8 @@ export default function Projects() {
   return (
     <section className="py-16" id="projects">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="w-full text-right  z-high  ">
-          <p className="text-sm uppercase tracking-wider text-primary dark:text-white ">
+        <div className="w-full text-right z-high">
+          <p className="text-sm uppercase tracking-wider text-primary dark:text-white">
             — Explore My Works
           </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-primary dark:text-pretty max-sm:text-3xl">
@@ -186,18 +187,52 @@ export default function Projects() {
           </h2>
         </div>
 
-        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
-          Main Projects
-        </h3>
+        {/* Main Projects heading with underline animation */}
+        <motion.div
+          className="inline-block relative mb-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 1 }}
+        >
+          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+            Main Projects
+          </h3>
+          <motion.span
+            className="absolute left-0 -bottom-1 h-[3px] bg-pretty dark:bg-primary rounded-full"
+            variants={{
+              hidden: { width: 0 },
+              visible: { width: "100%" },
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+        </motion.div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.main.map((p) => (
             <ProjectCard key={p.title} {...p} />
           ))}
         </div>
 
-        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 my-10">
-          Internship
-        </h3>
+        {/* Internship heading with underline animation */}
+        <motion.div
+          className="inline-block relative my-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
+          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+            Internship
+          </h3>
+          <motion.span
+            className="absolute left-0 -bottom-1 h-[3px] bg-pretty dark:bg-primary rounded-full"
+            variants={{
+              hidden: { width: 0 },
+              visible: { width: "100%" },
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+        </motion.div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.internship.map((p) => (
             <ProjectCard key={p.title} {...p} />

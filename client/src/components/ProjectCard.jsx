@@ -72,7 +72,7 @@ export function ProjectCard({
           {label}
         </a>
       </div>
-      <MdStars className=" text-pretty opacity-40 dark:opacity-70  text-[150px] absolute bottom-50 left-50  translate-x-25 translate-y-55 rotate-45" />
+      <MdStars className=" text-pretty opacity-40 dark:opacity-50  text-[150px] absolute bottom-50 left-50  translate-x-25 translate-y-55 rotate-45" />
     </article>
   );
 }
