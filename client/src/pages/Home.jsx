@@ -10,12 +10,12 @@ import MiniProjects from "@/components/MiniProjects";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import Projects from "@/components/projects";
 import RiveMan from "@/components/RiveMan";
+import Form from "@/components/Form";
 
 const Home = () => {
   return (
     <div className="relative sm:w-full overflow-hidden ">
       <HeroSection />
-      <RiveMan/>
       <VelocityBanner />
       <HeroBgSvg />
       <TechArsenalOrbit />
@@ -36,6 +36,7 @@ const Home = () => {
         <Projects />
         <MiniProjects />
       </div>
+        <Form/>
     </div>
   );
 };
