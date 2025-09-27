@@ -11,6 +11,7 @@ import { GridPattern } from "@/components/ui/grid-pattern";
 import Projects from "@/components/projects";
 import RiveMan from "@/components/RiveMan";
 import Form from "@/components/Form";
+import ContactMe from "@/components/ContactMe";
 
 const Home = () => {
   return (
@@ -36,6 +37,7 @@ const Home = () => {
         <Projects />
         <MiniProjects />
       </div>
+        <ContactMe/>
         <Form/>
     </div>
   );

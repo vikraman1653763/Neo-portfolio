@@ -90,7 +90,7 @@ const MiniProjects = () => {
       key={openIndex} // triggers exit/enter
       src={miniProjects[openIndex].image}
       alt={miniProjects[openIndex].title}
-      className=" border-2 border-primary dark:border-pretty absolute inset-0 w-full h-full object-cover rounded-xl"
+      className=" absolute inset-0 w-full h-full object-cover rounded-xl"
       variants={{
         initial: { opacity: 0 , x:300 }, // enter from top with slight skew
         animate: { opacity: 1,x:0},
